@@ -10,8 +10,11 @@ Route::get('/', function () {
 Route::get('about/', function () {
     return view('frontend.about');
 });
-Route::get('admin/', function () {
-    return view('admin.index');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('dashboard/', function () {
+        return view('admin.index');
+    });
+    Route::resource('categories', 'CategoryController');
 });
 Auth::routes();
 
