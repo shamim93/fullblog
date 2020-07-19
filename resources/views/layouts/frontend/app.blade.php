@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/aos.css')}}">
 
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+    
   </head>
   <body>
   
@@ -43,6 +44,8 @@
   <script src="{{asset('frontend/js/aos.js')}}"></script>
 
   <script src="{{asset('frontend/js/main.js')}}"></script>
+  
+  
 
 
   </body>
