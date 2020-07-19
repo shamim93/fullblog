@@ -34,7 +34,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
+        <!--  <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -57,12 +57,40 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+-->
+          <li class="nav-item ">
+            <a href="{{route('admin')}}" class="nav-link {{ Request::is('admin') ? 'active' : ''}}">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+               Dashboard
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('categories.index')}}" class="nav-link  {{ Request::is('admin/categories*') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-clone"></i>
+              <p>
+               Categories
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('tags.index')}}" class="nav-link {{ Request::is('admin/tags*') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tags"></i>
+              <p>
+               Tags
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('posts.index')}}" class="nav-link {{ Request::is('admin/posts*') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tags"></i>
+              <p>
+               Blog Post
+                <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>
