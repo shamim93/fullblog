@@ -2,6 +2,10 @@
 @section('title')
 Blog | Create post
 @endsection
+@push('css')
+<link rel="stylesheet" href="{{asset('editor/summernote-bs4.min.css')}}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+@endpush
 @section('content')
 <div class="content-header">
     <div class="container-fluid">
@@ -75,17 +79,16 @@ Blog | Create post
                 </div>
                 <div class="form-group">
                     <label for="tag">Tags*</label>
+                    @foreach($tags as $tag)
+                    <input type="checkbox" name="tag[]" class="form-control {{$errors->has('tag') ? 'is-invalid' : ''}}"
+                        id="tag" value="{{$tag->id}}">
 
-                    <select name="tag[]" class="form-control {{$errors->has('tag') ? 'is-invalid' : ''}}"
-                        id="tag" value="{{old('tag[]')}}" multiple>
-                        @foreach($tags as $tag)
-                        <option value="{{$tag->id}}">{{$tag->name}}</option>
-                        @endforeach
-                    </select>
+                    {{$tag->name}}
 
+                    @endforeach
 
                     @if($errors->has('tag'))
-                    <span class="invalid-feedback">{{$errors->first('tag')}}</span>
+                    <span class=" invalid-feedback">{{$errors->first('tag')}}</span>
                     @endif
 
                 </div>
@@ -101,3 +104,14 @@ Blog | Create post
     </div>
 </div>
 @endsection
+@push('script')
+<script  src="{{asset('editor/summernote-bs4.min.js')}}">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script>
+$('#description').summernote({
+    placeholder: 'Write your post',
+    tabsize: 2,
+    height: 300
+});
+</script>
+@endpush
